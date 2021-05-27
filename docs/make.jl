@@ -16,8 +16,10 @@ makedocs(;
     pages=[
         "Home" => "index.md",
     ],
+    strict=true,
 )
 
 deploydocs(;
     repo="github.com/bcbi/ManifestStuff.jl",
+    devbranch="main",
 )
