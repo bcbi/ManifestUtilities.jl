@@ -5,7 +5,7 @@ DocMeta.setdocmeta!(ManifestStuff, :DocTestSetup, :(using ManifestStuff); recurs
 
 makedocs(;
     modules=[ManifestStuff],
-    authors="Dilum Aluthge, contributors",
+    authors="Dilum Aluthge and contributors",
     repo="https://github.com/bcbi/ManifestStuff.jl/blob/{commit}{path}#{line}",
     sitename="ManifestStuff.jl",
     format=Documenter.HTML(;
@@ -16,8 +16,10 @@ makedocs(;
     pages=[
         "Home" => "index.md",
     ],
+    strict=true,
 )
 
 deploydocs(;
     repo="github.com/bcbi/ManifestStuff.jl",
+    devbranch="main",
 )
