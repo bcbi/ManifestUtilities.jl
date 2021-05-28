@@ -60,9 +60,9 @@ jobs:
       - run: |
           julia --project=docs -e '
             using Documenter: DocMeta, doctest
-            using ManifestStuff
-            DocMeta.setdocmeta!(ManifestStuff, :DocTestSetup, :(using ManifestStuff); recursive=true)
-            doctest(ManifestStuff)'
+            using ManifestUtilities
+            DocMeta.setdocmeta!(ManifestUtilities, :DocTestSetup, :(using ManifestUtilities); recursive=true)
+            doctest(ManifestUtilities)'
       - run: julia --project=docs docs/make.jl
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

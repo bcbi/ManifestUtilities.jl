@@ -1,4 +1,4 @@
-name = "ManifestStuff"
+name = "ManifestUtilities"
 uuid = "8c44504f-1cba-4a08-a12a-8828b1581fee"
 authors = ["Dilum Aluthge", "contributors"]
 version = "1.0.0-DEV"

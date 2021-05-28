@@ -1,4 +1,4 @@
-module ManifestStuff
+module ManifestUtilities
 
 import LightGraphs
 import MetaGraphs

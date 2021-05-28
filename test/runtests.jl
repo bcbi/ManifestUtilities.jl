@@ -1,4 +1,4 @@
-using ManifestStuff
+using ManifestUtilities
 using Test
 
 @testset "manifest_format_1_0" begin
