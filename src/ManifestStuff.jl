@@ -2,8 +2,15 @@ module ManifestStuff
 
 import LightGraphs
 import MetaGraphs
+import Pkg
 import TOML
 
-foo(x) = x + x
+export prune_manifest
+
+include("types.jl")
+
+include("pkg.jl")
+
+include("prune_manifest.jl")
 
 end # module

@@ -1,0 +1,4 @@
+[deps]
+Example = "7876af07-990d-54b4-ab0e-23690620f79a"
+JSON3 = "0f8b85d8-7281-11e9-16c2-39a750bddbf1"
+MLJModelInterface = "e80e1ace-859a-464e-9ed9-23947d8ae3ea"
