@@ -1,0 +1,69 @@
+# This file is machine-generated - editing it directly is not advised
+
+[[Dates]]
+deps = ["Printf"]
+uuid = "ade2ca70-3891-5945-98fb-dc099432e06a"
+
+[[Example]]
+git-tree-sha1 = "46e44e869b4d90b96bd8ed1fdcf32244fddfb6cc"
+uuid = "7876af07-990d-54b4-ab0e-23690620f79a"
+version = "0.5.3"
+
+[[JSON3]]
+deps = ["Dates", "Mmap", "Parsers", "StructTypes", "UUIDs"]
+git-tree-sha1 = "a61b471557f4cf73bc1047aef9c6aa941d115320"
+uuid = "0f8b85d8-7281-11e9-16c2-39a750bddbf1"
+version = "1.8.2"
+
+[[MLJModelInterface]]
+deps = ["Random", "ScientificTypes", "StatisticalTraits"]
+git-tree-sha1 = "cafa0e923ce1ae659a4b4cb8eb03c98b916f0d4d"
+uuid = "e80e1ace-859a-464e-9ed9-23947d8ae3ea"
+version = "1.1.0"
+
+[[Mmap]]
+uuid = "a63ad114-7e13-5084-954f-fe012c677804"
+
+[[Parsers]]
+deps = ["Dates"]
+git-tree-sha1 = "c8abc88faa3f7a3950832ac5d6e690881590d6dc"
+uuid = "69de0a69-1ddd-5017-9359-2bf0b02dc9f0"
+version = "1.1.0"
+
+[[Printf]]
+deps = ["Unicode"]
+uuid = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+
+[[Random]]
+deps = ["Serialization"]
+uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
+
+[[SHA]]
+uuid = "ea8e919c-243c-51af-8825-aaa63cd721ce"
+
+[[ScientificTypes]]
+git-tree-sha1 = "b4e89a674804025c4a5843e35e562910485690c2"
+uuid = "321657f4-b219-11e9-178b-2701a2544e81"
+version = "1.1.2"
+
+[[Serialization]]
+uuid = "9e88b42a-f829-5b0c-bbe9-9e923198166b"
+
+[[StatisticalTraits]]
+deps = ["ScientificTypes"]
+git-tree-sha1 = "2d882a163c295d5d754e4102d92f4dda5a1f906b"
+uuid = "64bff920-2084-43da-a3e6-9bb72801c0c9"
+version = "1.1.0"
+
+[[StructTypes]]
+deps = ["Dates", "UUIDs"]
+git-tree-sha1 = "e36adc471280e8b346ea24c5c87ba0571204be7a"
+uuid = "856f2bd8-1eba-4b0a-8007-ebc267875bd4"
+version = "1.7.2"
+
+[[UUIDs]]
+deps = ["Random", "SHA"]
+uuid = "cf7118a7-6976-5b1a-9a39-7adc72f591a4"
+
+[[Unicode]]
+uuid = "4ec0a83e-493e-50e2-b9ac-8f72acf5a8f5"
