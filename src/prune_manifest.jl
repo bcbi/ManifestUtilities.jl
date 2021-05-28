@@ -1,16 +1,22 @@
 const _prune_manifest_kwargs_docstring = """
 ## Required Keyword Arguments
+
+You must specify one (and exactly one) of `project` and `project_filename`.
+Similarly, you must specify one (and exactly one) of `manifest` and
+`manifest_filename`.
+
+- `project::Union{AbstractString, IO}`: the contents of the input `Project.toml` file
 - `project_filename::AbstractString`: the filename of the input `Project.toml` file
+- `manifest::Union{AbstractString, IO}`: the contents of the input `Manifest.toml` file
 - `manifest_filename::AbstractString`: the filename of the input `Manifest.toml` file
 """
 
 """
-    prune_manifest(; kwargs...) -> AbstractString
+    prune_manifest(; kwargs...) --> new_manifest::AbstractString
 
 Parse the given project and manifest, and generate a new manifest that only
 includes packages that are direct or indirect (recursive) dependencies of the
-given project. The new manifest is returned as an `AbstractString`. The
-original project and manifest are not modified.
+given project. The new manifest is returned as an `AbstractString`.
 
 $(_prune_manifest_kwargs_docstring)
 """
@@ -23,19 +29,37 @@ end
 
 Parse the given project and manifest, and generate a new manifest that only
 includes packages that are direct or indirect (recursive) dependencies of the
-given project. The new manifest is printed to the given `IO`. The
-original project and manifest are not modified.
+given project. The new manifest is printed to the given `IO`.
 
 $(_prune_manifest_kwargs_docstring)
 """
 function prune_manifest(io::IO;
-                        project_filename::AbstractString,
-                        manifest_filename::AbstractString)
-    project_dict = TOML.parsefile(project_filename)
-    manifest_dict = TOML.parsefile(manifest_filename)
-    project = ProjectTOMLDict(project_dict)
-    manifest = ManifestTOMLDict(manifest_dict)
-    return prune_manifest(io, project, manifest)
+                        project::Union{AbstractString, IO, Nothing}       = nothing,
+                        project_filename::Union{AbstractString, Nothing}  = nothing,
+                        manifest::Union{AbstractString, IO, Nothing}      = nothing,
+                        manifest_filename::Union{AbstractString, Nothing} = nothing)
+    if (project !== nothing) && (project_filename !== nothing)
+        throw(ArgumentError("You may not specify both `project` or `project_filename`; you must only specify one"))
+    elseif (project !== nothing) && (project_filename === nothing)
+        project_dict = TOML.parse(project)
+    elseif (project === nothing) && (project_filename !== nothing)
+        project_dict = TOML.parsefile(project_filename)
+    else
+        throw(ArgumentError("You must specify either `project` or `project_filename`"))
+    end
+    if (manifest !== nothing) && (manifest_filename !== nothing)
+        throw(ArgumentError("You may not specify both `manifest` or `manifest_filename`; you must only specify one"))
+    elseif (manifest !== nothing) && (manifest_filename === nothing)
+        manifest_dict = TOML.parse(manifest)
+    elseif (manifest === nothing) && (manifest_filename !== nothing)
+        manifest_dict = TOML.parsefile(manifest_filename)
+    else
+        throw(ArgumentError("You must specify either `manifest` or `manifest_filename`"))
+    end
+
+    project_struct = ProjectTOMLDict(project_dict)
+    manifest_struct = ManifestTOMLDict(manifest_dict)
+    return prune_manifest(io, project_struct, manifest_struct)
 end
 
 function prune_manifest(io::IO,
