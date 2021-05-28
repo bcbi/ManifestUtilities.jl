@@ -1,23 +1,32 @@
+const _prune_manifest_kwargs_docstring = """
+## Required Keyword Arguments
+- `project_filename::AbstractString`: the filename of the input `Project.toml` file
+- `manifest_filename::AbstractString`: the filename of the input `Manifest.toml` file
 """
-    prune_manifest(; project_filename::AbstractString, manifest_filename::AbstractString) -> AbstractString
 
-Read the project and manifest files from the respective filenames, remove all
-packages from the manifest that are not indirect (recursive) dependencies of
-the project file, and return the new manifest file as a string. The original
-project and manifest files are not modified.
 """
-function prune_manifest(; project_filename::AbstractString,
-                          manifest_filename::AbstractString)
-    return sprint(io -> prune_manifest(io; project_filename, manifest_filename))
+    prune_manifest(; kwargs...) -> AbstractString
+
+Parse the given project and manifest, and generate a new manifest that only
+includes packages that are direct or indirect (recursive) dependencies of the
+given project. The new manifest is returned as an `AbstractString`. The
+original project and manifest are not modified.
+
+$(_prune_manifest_kwargs_docstring)
+"""
+function prune_manifest(; kwargs...)
+    return sprint(io -> prune_manifest(io; kwargs...))
 end
 
 """
-    prune_manifest(io::IO; project_filename::AbstractString, manifest_filename::AbstractString)
+    prune_manifest(io::IO; kwargs...)
 
-Read the project and manifest files from the respective filenames, remove all
-packages from the manifest that are not indirect (recursive) dependencies of
-the project file, and print the new manifest file to `IO`. The original
-project and manifest files are not modified.
+Parse the given project and manifest, and generate a new manifest that only
+includes packages that are direct or indirect (recursive) dependencies of the
+given project. The new manifest is printed to the given `IO`. The
+original project and manifest are not modified.
+
+$(_prune_manifest_kwargs_docstring)
 """
 function prune_manifest(io::IO;
                         project_filename::AbstractString,
