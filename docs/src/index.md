@@ -1,16 +1,16 @@
 ```@meta
-CurrentModule = ManifestStuff
+CurrentModule = ManifestUtilities
 ```
 
-# ManifestStuff
+# ManifestUtilities
 
-Documentation for [ManifestStuff](https://github.com/bcbi/ManifestStuff.jl).
+Documentation for [ManifestUtilities](https://github.com/bcbi/ManifestUtilities.jl).
 
 ```@index
 ```
 
 ```@autodocs
-Modules = [ManifestStuff]
+Modules = [ManifestUtilities]
 Public = true
 Private = false
 ```
