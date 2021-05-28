@@ -1,10 +1,23 @@
 """
+    prune_manifest(; project_filename::AbstractString, manifest_filename::AbstractString) -> AbstractString
+
+Read the project and manifest files from the respective filenames, remove all
+packages from the manifest that are not indirect (recursive) dependencies of
+the project file, and return the new manifest file as a string. The original
+project and manifest files are not modified.
+"""
+function prune_manifest(; project_filename::AbstractString,
+                          manifest_filename::AbstractString)
+    return sprint(io -> prune_manifest(io; project_filename, manifest_filename))
+end
+
+"""
     prune_manifest(io::IO; project_filename::AbstractString, manifest_filename::AbstractString)
 
-Read the project and manifest files from the respective filenames,
-remove all packages from the manifest that are not indirect (recursive)
-dependencies of the project file, and print the new manifest to `IO`.
-The original project and manifest files are not modified.
+Read the project and manifest files from the respective filenames, remove all
+packages from the manifest that are not indirect (recursive) dependencies of
+the project file, and print the new manifest file to `IO`. The original
+project and manifest files are not modified.
 """
 function prune_manifest(io::IO;
                         project_filename::AbstractString,
